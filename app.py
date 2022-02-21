@@ -1,6 +1,6 @@
 from models.database import Database
 import json
-from flask import jsonify, Flask, redirect, request
+from flask import jsonify, Flask, redirect, request, url_for
 from flask_oidc import OpenIDConnect
 from flask_cors import CORS
 import logging
@@ -14,7 +14,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 app = Flask(__name__)
 app.config.update({
-    'SECRET_KEY': 'a0szjeBHMPNBJ8d8AAiFYN6v0wK10M8c',
+    'SECRET_KEY': 'FQDTdIDyy7hIVDl4xyj5tES8k2OsiAQM',
     'TESTING': True,
     'DEBUG': True,
     'OIDC_CLIENT_SECRETS': 'client_secrets.json',
@@ -31,9 +31,15 @@ oidc = OpenIDConnect(app)
 
 CORS(app)
 
-@app.route("/", methods=['GET'])
+@app.route("/")
 @oidc.require_login
 def home():
+    return redirect(url_for('users')) 
+
+
+@app.route("/users", methods=['GET'])
+@oidc.require_login
+def users():
     select_employee = """SELECT * FROM user_details"""
     con = conn.connect()
     cursor = con.cursor()
