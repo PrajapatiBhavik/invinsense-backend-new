@@ -1,4 +1,6 @@
 flask
 mariadb
 flask_cors
+flask_oidc
+openid-connect
 mysql-connector-python

@@ -6,6 +6,7 @@ from flask_cors import CORS
 import logging
 import mariadb
 from models.database import Database
+from flasgger import Swagger
 
 conn = Database()
 
@@ -13,8 +14,9 @@ logging.basicConfig(level=logging.DEBUG)
 
 
 app = Flask(__name__)
+swagger = Swagger(app)  
 app.config.update({
-    'SECRET_KEY': 'FQDTdIDyy7hIVDl4xyj5tES8k2OsiAQM',
+    'SECRET_KEY': 'Kdc1mNlCO01XpiloKjjdYkkWYdcYHmMX',
     'TESTING': True,
     'DEBUG': True,
     'OIDC_CLIENT_SECRETS': 'client_secrets.json',
