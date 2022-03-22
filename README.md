@@ -58,6 +58,24 @@
     ```
 
     Or test creating bucketlists using Postman
+    
+    
+    
+    # query for creating table for visits_log (user tracking)
+    CREATE TABLE `visits_log` (
+  `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `no_of_visits` int NULL,
+  `ip_address` varchar(255) NULL,
+  `requested_url` varchar(255) NULL,
+  `referer_page` varchar(255) NULL,
+  `page_name` varchar(255) NULL,
+  `query_string` varchar(255) NULL,
+  `user_agent` varchar(255) NULL,
+  `access_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `method` varchar(255) NULL,
+  `username` varchar(255) NULL,
+  `tool_name` varchar(255) NULL
+);
 
 
     
